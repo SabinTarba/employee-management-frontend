@@ -40,17 +40,20 @@ export default class ListEmployeeComponent extends Component {
                                 <th>Employee First Name</th>
                                 <th>Employee Last Name</th>
                                 <th>Employee Email ID</th>
+                                <th>Salary</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
 
                         <tbody>
+
                             {
                                 this.state.employees.map(employee =>
                                     <tr key={employee.id}>
                                         <td>{employee.firstName}</td>
                                         <td>{employee.lastName}</td>
                                         <td>{employee.emailId}</td>
+                                        <td>{employee.salary}</td>
                                     </tr>
                                 )
                             }
