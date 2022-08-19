@@ -26,7 +26,7 @@ export default class ListEmployeeComponent extends Component {
     render() {
         return (
             <div>
-                <h2 className="text-center">Employees List</h2>
+                <h2 className="text-center">Employees List -</h2>
                 <div className="row">
                     <Link to="/add-employee">
                         <button className="btn btn-primary" style={{ margin: "0 0 15px 0" }}>Add Employee</button>
@@ -41,6 +41,7 @@ export default class ListEmployeeComponent extends Component {
                                 <th>Employee Last Name</th>
                                 <th>Employee Email ID</th>
                                 <th>Salary</th>
+                                <th>Hire date</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -54,6 +55,7 @@ export default class ListEmployeeComponent extends Component {
                                         <td>{employee.lastName}</td>
                                         <td>{employee.emailId}</td>
                                         <td>{employee.salary}</td>
+                                        <td>{employee.hireDate}</td>
                                     </tr>
                                 )
                             }
