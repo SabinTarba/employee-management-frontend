@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const EMPLOYEE_API_BASE_URL = "https://employee-management-starba.herokuapp.com/api/v1/employees/allEmployees"
+const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/employees/allEmployees"
 
 class EmployeeService {
 
