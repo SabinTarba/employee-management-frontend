@@ -26,7 +26,7 @@ export default class ListEmployeeComponent extends Component {
     render() {
         return (
             <div>
-                <h2 className="text-center">Employees List -</h2>
+                <h2 className="text-center">Employees List</h2>
                 <div className="row">
                     <Link to="/add-employee">
                         <button className="btn btn-primary" style={{ margin: "0 0 15px 0" }}>Add Employee</button>
