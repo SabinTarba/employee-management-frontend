@@ -74,7 +74,9 @@ function ListOrdersComponent() {
 
     const deleteOrder = (id) => {
         OrderService.deleteOrder(id).then((res) => {
-            navigate("/orders");
+            if (res.status === 200) {
+                navigate(0);
+            }
         })
     }
 
