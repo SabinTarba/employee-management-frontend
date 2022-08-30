@@ -35,7 +35,9 @@ function ListOrdersComponent() {
     const processOrder = (ord) => {
 
         OrderService.processOrder(ord).then(() => {
-            navigate(0);
+            if (res.status === 200) {
+                navigate(0);
+            }
         });
     }
 
