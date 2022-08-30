@@ -37,6 +37,7 @@ function ListOrdersComponent() {
         OrderService.processOrder(ord).then((res) => {
             if (res.status === 200) {
                 navigate("/orders");
+                navigate(0);
             }
         });
     }
