@@ -35,7 +35,7 @@ function ListOrdersComponent() {
     const processOrder = (ord) => {
         OrderService.processOrder(ord).then(() => {
             alert("Order has been processed!");
-            navigate(0);
+            navigate("/orders");
         });
     }
 
