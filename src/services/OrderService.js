@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+<<<<<<< HEAD
 const ORD_API_FETCH_ALL_ORDERS = "http://localhost:8080/api/v1/orders/allOrders/"
 const ORD_API_FETCH_ALL_STATUS_ORDERS = "http://localhost:8080/api/v1/orders/allStatus/"
 const ORD_API_DELETE_ORDER_BY_ID = "http://localhost:8080/api/v1/orders/deleteOrder/"
@@ -8,6 +9,12 @@ const ORD_API_PUT_ORDER = "http://localhost:8080/api/v1/orders/updateOrder/"
 const ORD_API_FETCH_ALL_ORDERS_WITH_INFO = "http://localhost:8080/api/v1/orders/allInfoOrders/"
 const ORD_API_FETCH_ALL_ORDER_SOURCES = "http://localhost:8080/api/v1/orders/allOrderSources/"
 const ORD_API_PROCESS_ORDER = "http://localhost:8080/api/v1/orders/processOrder/"
+=======
+const ORD_API_FETCH_ALL_ORDERS = "https://employee-management-starba.herokuapp.com/api/v1/orders/allOrders/"
+const ORD_API_FETCH_ALL_STATUS_ORDERS = "https://employee-management-starba.herokuapp.com/api/v1/orders/allStatus/"
+const ORD_API_DELETE_ORDER_BY_ID = "https://employee-management-starba.herokuapp.com/api/v1/orders/deleteOrder/"
+const ORD_API_POST_ORDER = "https://employee-management-starba.herokuapp.com/api/v1/orders/createOrder/"
+>>>>>>> c04be381cd19936d847e32de23117f734e12db1e
 
 
 
