@@ -1,7 +1,6 @@
 import OrderService from "../../services/OrderService";
-import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import EmployeeService from "../../services/EmployeeService";
 
 
@@ -9,8 +8,8 @@ import EmployeeService from "../../services/EmployeeService";
 
 
 function CreateOrderComponent() {
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     var date = new Date();
 
     const [employees, setEmployees] = useState([]);
@@ -20,6 +19,7 @@ function CreateOrderComponent() {
         status: "W",
 
     });
+
 
     const getEmployees = () => {
         EmployeeService.getEmployees().then((data) => {
@@ -33,6 +33,7 @@ function CreateOrderComponent() {
 
 
     const handleEmployeeFullName = (e) => {
+
         let updatedValue = { employeeId: e.target.value };
         setOrder(order => ({
             ...order,
@@ -41,22 +42,14 @@ function CreateOrderComponent() {
 
     }
 
-    const saveOrder = () => {
+    const saveOrder = (e) => {
+        e.preventDefault();
 
-        OrderService.createOrder(order).then((res) => {
-
-            if (res.status === 200) {
-
-                navigate('/orders');
-                navigate(0);
-            }
-
-
+        OrderService.createOrder(order).then(() => {
+            navigate("/orders");
         })
-
-
-
     }
+
 
 
     return (
@@ -67,8 +60,6 @@ function CreateOrderComponent() {
                         <h3 className="text-center">Add Order</h3>
                         <div className="card-body">
                             <form onSubmit={saveOrder}>
-
-
                                 <div className="form-group">
                                     <label>Employee Full Name</label>
                                     <select className="form-control" value={order.employeeId} onChange={handleEmployeeFullName} required>
@@ -85,7 +76,7 @@ function CreateOrderComponent() {
 
 
                                 <div className="text-center">
-                                    <button className="btn btn-primary">Save</button>
+                                    <button type="submit" className="btn btn-primary">Save</button>
 
 
                                     <Link to={"/orders"}>

@@ -58,16 +58,13 @@ function CreateEmployeeComponent() {
         }));
     }
 
-    const saveEmployee = () => {
+    const saveEmployee = (e) => {
 
-        EmployeeService.createEmployee(employee).then((res) => {
+        e.preventDefault();
 
-            if (res.status === 200) {
+        EmployeeService.createEmployee(employee).then(() => {
 
-                navigate('/');
-                navigate(0);
-            }
-
+            navigate('/employees');
         })
 
     }
@@ -104,7 +101,7 @@ function CreateEmployeeComponent() {
 
 
                                 <div className="text-center">
-                                    <button className="btn btn-success ">Save</button>
+                                    <button type="submit" className="btn btn-success ">Save</button>
 
 
                                     <Link to={"/employees"}>
