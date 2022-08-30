@@ -13,10 +13,13 @@ function CreateOrderComponent() {
     var date = new Date();
 
     const [employees, setEmployees] = useState([]);
+    const [orderSources, setOrderSources] = useState([]);
+
     const [order, setOrder] = useState({
         dt: date,
         employeeId: "",
         status: "W",
+        origin: ""
 
     });
 
@@ -27,8 +30,15 @@ function CreateOrderComponent() {
         })
     }
 
+    const getOrderSources = () => {
+        OrderService.getOrderSources().then((data) => {
+            setOrderSources(data.data);
+        })
+    }
+
     useEffect(() => {
         getEmployees();
+        getOrderSources();
     }, [])
 
 
@@ -40,6 +50,17 @@ function CreateOrderComponent() {
             ...updatedValue
         }));
 
+    }
+
+
+    const handleOrderSource = (e) => {
+        e.preventDefault();
+
+        let updatedValue = { origin: e.target.value };
+        setOrder(order => ({
+            ...order,
+            ...updatedValue
+        }));
     }
 
     const saveOrder = (e) => {
@@ -68,6 +89,20 @@ function CreateOrderComponent() {
                                             employees.map((employee) => {
                                                 return (
                                                     <option key={employee.id} value={employee.id}>{employee.firstName + " " + employee.lastName}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Order source</label>
+                                    <select className="form-control" value={orderSources.id} onChange={handleOrderSource} required>
+                                        <option key={0} value={0}>Select order source</option>
+                                        {
+                                            orderSources.map((source) => {
+                                                return (
+                                                    <option key={source.id} value={source.id}>{source.description}</option>
                                                 )
                                             })
                                         }

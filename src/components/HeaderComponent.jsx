@@ -6,7 +6,7 @@ function HeaderComponent() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
 
             <div className="container d-flex justify-content-between">
-                <span className="navbar-brand fs-5 fw-bold">Employee Management</span>
+                <span className="navbar-brand fs-5 fw-bold">Order Management System</span>
 
                 <ul className="navbar-nav">
                     <Link to={'/'}>

@@ -12,7 +12,7 @@ function ListEmployeeComponent() {
     const [employees, setEmployees] = useState([]);
 
     const getEmployees = () => {
-        EmployeeService.getEmployees().then((employees) => {
+        EmployeeService.getEmployeesInfo().then((employees) => {
             setEmployees(employees.data);
         })
     }
@@ -56,7 +56,9 @@ function ListEmployeeComponent() {
                                             <th>Last name</th>
                                             <th>Email</th>
                                             <th>Salary</th>
+                                            <th>Function</th>
                                             <th>Hire date</th>
+                                            <th scope="col"><span className="ml-5">Actions</span></th>
                                         </tr>
                                     </thead>
 
@@ -70,9 +72,14 @@ function ListEmployeeComponent() {
                                                         <td>{employee.lastName}</td>
                                                         <td>{employee.emailId}</td>
                                                         <td>{employee.salary}</td>
+                                                        <td>{employee.functionDescription}</td>
+
                                                         <td>{employee.hireDate}</td>
-                                                        <td><button onClick={() => updateEmployee(employee.id)} className="btn btn-info">Update</button></td>
-                                                        <td><button onClick={() => deleteEmployee(employee.id)} className="btn btn-danger">Delete</button></td>
+                                                        <div className="container d-flex justify-content-center">
+                                                            <td><button onClick={() => updateEmployee(employee.id)} className="btn btn-info">Update</button></td>
+                                                            <td><button onClick={() => deleteEmployee(employee.id)} className="btn btn-danger">Delete</button></td>
+                                                        </div>
+
 
                                                     </tr>
                                                 )
