@@ -34,8 +34,11 @@ function ListOrdersComponent() {
 
     const processOrder = (ord) => {
 
-        OrderService.processOrder(ord).then(() => {
-            navigate(0);
+        OrderService.processOrder(ord).then((res) => {
+            if (res.status === 200) {
+                navigate("/orders");
+                navigate(0);
+            }
         });
     }
 
