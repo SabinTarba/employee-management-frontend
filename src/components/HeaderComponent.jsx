@@ -1,22 +1,31 @@
-import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
-export default class HeaderComponent extends Component {
+function HeaderComponent() {
+    return (
 
-    constructor(props) {
-        super(props)
+        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
 
-        this.state = {}
-    }
+            <div className="container d-flex justify-content-between">
+                <span className="navbar-brand fs-5 fw-bold">Employee Management</span>
 
-    render() {
-        return (
-            <div>
-                <header>
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                        <div><a href="/" className="navbar-brand">Employee Management</a></div>
-                    </nav>
-                </header>
+                <ul className="navbar-nav">
+                    <Link to={'/'}>
+                        <span className="nav-item nav-link active">Employees</span>
+                    </Link>
+                    <Link to={'/orders'}>
+                        <span className="nav-item nav-link">Orders</span>
+                    </Link>
+                    <Link to={'/add-employee'}>
+                        <span className="nav-item nav-link">Add employee</span>
+                    </Link>
+                    <Link to={'/add-order'}>
+                        <span className="nav-item nav-link">Add order</span>
+                    </Link>
+                </ul>
             </div>
-        )
-    }
+
+        </nav >
+    )
 }
+
+export default HeaderComponent
