@@ -7,6 +7,8 @@ const EMPLOYEE_API_PUT_EMPLOYEE = "http://localhost:8080/api/v1/employees/update
 const EMPLOYEE_API_DELETE_EMPLOYEE = "http://localhost:8080/api/v1/employees/deleteEmployee/"
 
 
+const EMPLOYEE_API_BASE_URL = "https://employee-management-starba.herokuapp.com/api/v1/employees/allEmployees"
+
 class EmployeeService {
 
     async getEmployees() {
