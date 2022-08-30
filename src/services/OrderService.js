@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const ORD_API_FETCH_ALL_ORDERS = "http://localhost:8080/api/v1/orders/allOrders/"
-const ORD_API_FETCH_ALL_STATUS_ORDERS = "http://localhost:8080/api/v1/orders/allStatus/"
-const ORD_API_DELETE_ORDER_BY_ID = "http://localhost:8080/api/v1/orders/deleteOrder/"
-const ORD_API_POST_ORDER = "http://localhost:8080/api/v1/orders/createOrder/"
+const ORD_API_FETCH_ALL_ORDERS = "https://employee-management-starba.herokuapp.com//api/v1/orders/allOrders/"
+const ORD_API_FETCH_ALL_STATUS_ORDERS = "https://employee-management-starba.herokuapp.com//api/v1/orders/allStatus/"
+const ORD_API_DELETE_ORDER_BY_ID = "https://employee-management-starba.herokuapp.com//api/v1/orders/deleteOrder/"
+const ORD_API_POST_ORDER = "https://employee-management-starba.herokuapp.com//api/v1/orders/createOrder/"
 
 
 
