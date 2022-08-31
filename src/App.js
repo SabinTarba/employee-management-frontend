@@ -5,6 +5,7 @@ import CreateEmployeeComponent from './components/Employee/CreateEmployeeCompone
 import UpdateEmployeeComponent from './components/Employee/UpdateEmployeeComponent';
 import ListOrdersComponent from './components/Ord/ListOrdersComponent';
 import CreateOrderComponent from './components/Ord/CreateOrderComponent';
+import ListProductsComponent from './components/Product/ListProductsComponent';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/update-employee/:id" element={<UpdateEmployeeComponent />} />
           <Route path="/orders" element={<ListOrdersComponent />} />
           <Route path="/add-order" element={<CreateOrderComponent />} />
+          <Route path="/products" element={<ListProductsComponent />} />
         </Routes>
 
       </Router >

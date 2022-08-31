@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import EmployeeService from '../../services/EmployeeService'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
@@ -9,14 +9,28 @@ function CreateEmployeeComponent() {
 
     const navigate = useNavigate();
 
+    const [functions, setFunctions] = useState([]);
+
     const [employee, setEmployee] = useState({
         firstName: "",
         lastName: "",
         emailId: "",
         salary: "",
-        hireDate: ""
+        hireDate: "",
+        function: ""
 
     });
+
+
+    const getFunctions = () => {
+        EmployeeService.getFunctions().then((res) => {
+            setFunctions(res.data);
+        })
+    }
+
+    useEffect(() => {
+        getFunctions();
+    }, [])
 
     const handleFirstNameInput = (e) => {
         let updatedValue = { firstName: e.target.value };
@@ -36,6 +50,14 @@ function CreateEmployeeComponent() {
 
     const handleEmailIdInput = (e) => {
         let updatedValue = { emailId: e.target.value };
+        setEmployee(employee => ({
+            ...employee,
+            ...updatedValue
+        }));
+    }
+
+    const handleFunctionInput = (e) => {
+        let updatedValue = { function: e.target.value };
         setEmployee(employee => ({
             ...employee,
             ...updatedValue
@@ -63,7 +85,6 @@ function CreateEmployeeComponent() {
         e.preventDefault();
 
         EmployeeService.createEmployee(employee).then(() => {
-
             navigate('/employees');
         })
 
@@ -89,6 +110,19 @@ function CreateEmployeeComponent() {
                                 <div className="form-group">
                                     <label>Email address</label>
                                     <input type="email" placeholder="Email address" name="emailId" className="form-control" value={employee.emailId} onChange={handleEmailIdInput} required />
+                                </div>
+                                <div className="form-group">
+                                    <label>Function</label>
+                                    <select className="form-control" value={employee.function} onChange={handleFunctionInput} required>
+                                        <option key={0} value={0}>Select function</option>
+                                        {
+                                            functions.map((funct) => {
+                                                return (
+                                                    <option key={funct.id} value={funct.id}>{funct.description}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
                                 </div>
                                 <div className="form-group">
                                     <label>Salary</label>

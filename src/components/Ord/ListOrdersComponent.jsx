@@ -42,6 +42,15 @@ function ListOrdersComponent() {
         });
     }
 
+    const confirmOrder = (ord) => {
+        OrderService.confirmOrder(ord).then((res) => {
+            if (res.status === 200) {
+                navigate("/orders");
+                navigate(0);
+            }
+        });
+    }
+
 
 
 
@@ -81,6 +90,11 @@ function ListOrdersComponent() {
                                                             <button className="btn btn-danger" onClick={() => deleteOrder(order.ord)}>Delete</button>
                                                             {
                                                                 order.statusDescription === "Ready" ? <button className="btn btn-secondary mx-2" onClick={() => processOrder(order.ord)}>Process</button> : null
+
+                                                            }
+                                                            {
+                                                                order.statusDescription === "Waiting for confirmation" ? <button className="btn btn-info mx-2" onClick={() => confirmOrder(order.ord)}>Confirm order</button> : null
+
                                                             }
                                                         </div>
                                                     </td>

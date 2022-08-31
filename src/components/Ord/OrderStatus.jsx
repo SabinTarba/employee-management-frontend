@@ -13,7 +13,7 @@ function OrderStatus({ status }) {
             color = "grey";
             break;
 
-        case "Waiting":
+        case "Waiting for confirmation":
             color = "orange";
             break;
 

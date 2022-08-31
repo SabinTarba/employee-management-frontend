@@ -15,6 +15,9 @@ function HeaderComponent() {
                     <Link to={'/orders'}>
                         <span className="nav-item nav-link">Orders</span>
                     </Link>
+                    <Link to={'/products'}>
+                        <span className="nav-item nav-link">Products</span>
+                    </Link>
                     <Link to={'/add-employee'}>
                         <span className="nav-item nav-link">Add employee</span>
                     </Link>

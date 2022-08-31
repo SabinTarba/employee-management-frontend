@@ -16,11 +16,19 @@ function UpdateEmployeeComponent() {
         firstName: "",
         lastName: "",
         emailId: "",
+        function: "",
         salary: "",
         hireDate: ""
 
     });
 
+    const [functions, setFunctions] = useState([]);
+
+    const getFunctions = () => {
+        EmployeeService.getFunctions().then((res) => {
+            setFunctions(res.data);
+        })
+    }
 
 
     const handleFirstNameInput = (e) => {
@@ -41,6 +49,14 @@ function UpdateEmployeeComponent() {
 
     const handleEmailIdInput = (e) => {
         let updatedValue = { emailId: e.target.value };
+        setEmployee(employee => ({
+            ...employee,
+            ...updatedValue
+        }));
+    }
+
+    const handleFunctionInput = (e) => {
+        let updatedValue = { function: e.target.value };
         setEmployee(employee => ({
             ...employee,
             ...updatedValue
@@ -68,21 +84,23 @@ function UpdateEmployeeComponent() {
         EmployeeService.getEmployeeById(id).then((res) => {
 
             setEmployee(res.data);
-
         })
-
     }
 
     useEffect(() => {
         getEmployeeById(idEmployee);
+        getFunctions();
     }, [idEmployee])
 
-    const saveEmployee = () => {
+    const saveEmployee = (e) => {
+        e.preventDefault();
+
         EmployeeService.updateEmployee(employee).then((res) => {
+
             if (res.status === 200) {
-                navigate("/");
-                navigate(0);
+                navigate("/employees");
             }
+
         })
     }
 
@@ -92,7 +110,7 @@ function UpdateEmployeeComponent() {
             <div className="container mt-2">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-md-3">
-                        <h3 className="text-center">Add Employee</h3>
+                        <h3 className="text-center">Update Employee</h3>
                         <div className="card-body">
                             <form onSubmit={saveEmployee}>
                                 <div className="form-group">
@@ -108,6 +126,19 @@ function UpdateEmployeeComponent() {
                                     <input type="email" placeholder="Email address" name="emailId" className="form-control" value={employee.emailId} onChange={handleEmailIdInput} required />
                                 </div>
                                 <div className="form-group">
+                                    <label>Function</label>
+                                    <select className="form-control" value={employee.function} onChange={handleFunctionInput} required>
+                                        <option key={0} value={0}>Select function</option>
+                                        {
+                                            functions.map((funct) => {
+                                                return (
+                                                    <option key={funct.id} value={funct.id}>{funct.description}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div className="form-group">
                                     <label>Salary</label>
                                     <input type="number" placeholder="Salary" name="salary" className="form-control" value={employee.salary} onChange={handleSalaryInput} required />
                                 </div>
@@ -118,7 +149,7 @@ function UpdateEmployeeComponent() {
 
 
                                 <div className="text-center">
-                                    <button className="btn btn-warning ">Save new changes</button>
+                                    <button type="submit" className="btn btn-warning text-white">Save new changes</button>
 
 
                                     <Link to={"/employees"}>
