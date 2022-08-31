@@ -173,7 +173,7 @@ function CreateOrderComponent() {
 
     }
 
-    const checkData = () => {
+    //const checkData = () => {
         // console.log(quantitiesProductIDsARRAY);
         // console.log(order);
         //console.log(lastOrd);
@@ -182,7 +182,7 @@ function CreateOrderComponent() {
         // OrderService.createOrder(order).then((res) => {
         //     console.log(res.data.lastOrd);
         // })
-    }
+    //}
 
 
 
