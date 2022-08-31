@@ -279,7 +279,6 @@ function CreateOrderComponent() {
                     </div>
                 </form >
             </div >
-            <button onClick={checkData} className="btn btn-danger my-1">Check data</button>
 
         </div >
 
