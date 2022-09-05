@@ -7,6 +7,7 @@ const API_PRODUCT_TOGGLE_ACTIVE = "http://localhost:8080/api/v1/products/toggleA
 const API_PROUDCT_CREATE_PRODUCT = "http://localhost:8080/api/v1/products/createProduct/";
 const API_PRODUCT_PUT_PRODUCT = "http://localhost:8080/api/v1/products/updateProduct";
 
+
 class ProductService {
 
     async getProducts() {
