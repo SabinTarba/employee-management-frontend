@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 
-const ORDLN_API_POST_ORDLN = "http://localhost:8080/api/v1/ordlines/createLine";
-const ORDLN_API_POST_BULK_ORDLN = "http://localhost:8080/api/v1/ordlines/bulkCreateLines";
-const ORDLN_API_GET_ORD_LINES = "http://localhost:8080/api/v1/ordlines/getOrderLines/";
+const ORDLN_API_POST_ORDLN = "https://employee-management-starba.herokuapp.com/api/v1/ordlines/createLine";
+const ORDLN_API_POST_BULK_ORDLN = "https://employee-management-starba.herokuapp.com/api/v1/ordlines/bulkCreateLines";
+const ORDLN_API_GET_ORD_LINES = "https://employee-management-starba.herokuapp.com/api/v1/ordlines/getOrderLines/";
 
 
 class OrdLnService {
