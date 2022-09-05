@@ -1,34 +1,30 @@
-import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 function HeaderComponent() {
     return (
+        <Navbar bg="dark" expand="lg" className="mb-5" variant="dark">
+            <Container fluid>
+                <Navbar.Brand href="/" className="text-white">Order Management System</Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: '150px' }}
+                        navbarScroll
+                    >
+                        <Nav.Link href="/employees" className="text-white">Employee</Nav.Link>
+                        <Nav.Link href="/orders" className="text-white">Orders</Nav.Link>
+                        <Nav.Link href="/add-employee" className="text-white">Add employee</Nav.Link>
+                        <Nav.Link href="/add-order" className="text-white">Create new order</Nav.Link>
+                        <Nav.Link href="/products" className="text-white">Products</Nav.Link>
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
-
-            <div className="container d-flex justify-content-between">
-                <span className="navbar-brand fs-5 fw-bold">Order Management System</span>
-
-                <ul className="navbar-nav">
-                    <Link to={'/'}>
-                        <span className="nav-item nav-link active">Employees</span>
-                    </Link>
-                    <Link to={'/orders'}>
-                        <span className="nav-item nav-link">Orders</span>
-                    </Link>
-                    <Link to={'/products'}>
-                        <span className="nav-item nav-link">Products</span>
-                    </Link>
-                    <Link to={'/add-employee'}>
-                        <span className="nav-item nav-link">Add employee</span>
-                    </Link>
-                    <Link to={'/add-order'}>
-                        <span className="nav-item nav-link">Add order</span>
-                    </Link>
-                </ul>
-            </div>
-
-        </nav >
-    )
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar >
+    );
 }
 
-export default HeaderComponent
+export default HeaderComponent;

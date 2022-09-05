@@ -54,28 +54,9 @@ function CreateOrderComponent() {
     }, [])
 
 
-    const handleEmployeeFullName = (e) => {
-        e.preventDefault();
-
-        let updatedValue = { employeeId: e.target.value };
-        setOrder(order => ({
-            ...order,
-            ...updatedValue
-        }));
-
+    const handleOrderGeneralInformationFrom = (e) => {
+        setOrder(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
-
-
-    const handleOrderSource = (e) => {
-        e.preventDefault();
-
-        let updatedValue = { origin: e.target.value };
-        setOrder(order => ({
-            ...order,
-            ...updatedValue
-        }));
-    }
-
 
 
 
@@ -143,7 +124,6 @@ function CreateOrderComponent() {
     }
 
 
-
     // SAVE ORDER
     const saveOrder = (e) => {
         e.preventDefault();
@@ -154,35 +134,37 @@ function CreateOrderComponent() {
             const data = res.data;
             const lOrd = data.lastOrd;
 
-
-            let counter = 0;
-
-            quantitiesProductIDsARRAY.forEach((item) => {
-
-                counter = counter + 1;
-
-                item.ln = counter;
-                item.ord = lOrd;
-
-                OrdLnService.createLine(item);
+            quantitiesProductIDsARRAY.forEach((line) => {
+                line.ord = lOrd;
             })
 
-            navigate("/orders");
+
+            OrdLnService.bulkCreateLines(quantitiesProductIDsARRAY).then((res) => {
+                if (res.status === 200) {
+                    navigate("/orders");
+
+                }
+            })
+
         })
 
 
     }
 
-    const checkData = () => {
-        // console.log(quantitiesProductIDsARRAY);
-        // console.log(order);
-        //console.log(lastOrd);
-        //document.getElementById('test7').disabled = true;
 
-        // OrderService.createOrder(order).then((res) => {
-        //     console.log(res.data.lastOrd);
-        // })
-    }
+
+    // const checkData = () => {
+    //     // console.log(quantitiesProductIDsARRAY);
+    //     // console.log(order);
+    //     //console.log(lastOrd);
+    //     //document.getElementById('test7').disabled = true;
+
+    //     // OrderService.createOrder(order).then((res) => {
+    //     //     console.log(res.data.lastOrd);
+    //     // })
+    //            <button onClick={checkData} className="btn btn-danger my-1">Check data</button>
+
+    // }
 
 
 
@@ -197,7 +179,7 @@ function CreateOrderComponent() {
                             <div className="card-body">
                                 <div className="form-group">
                                     <label>Employee Full Name</label>
-                                    <select onClick={clearFields} className="form-control" value={order.employeeId} onChange={handleEmployeeFullName} required>
+                                    <select name="employeeId" onClick={clearFields} className="form-control" value={order.employeeId} onChange={handleOrderGeneralInformationFrom} required>
                                         <option key={0} value={0}>Select employee</option>
                                         {
                                             employees.map((employee) => {
@@ -211,7 +193,7 @@ function CreateOrderComponent() {
 
                                 <div className="form-group">
                                     <label>Order source</label>
-                                    <select onClick={clearFields} className="form-control" value={orderSources.id} onChange={handleOrderSource} required>
+                                    <select name="origin" onClick={clearFields} className="form-control" value={orderSources.id} onChange={handleOrderGeneralInformationFrom} required>
                                         <option key={0} value={0}>Select order source</option>
                                         {
                                             orderSources.map((source) => {
@@ -279,7 +261,6 @@ function CreateOrderComponent() {
                     </div>
                 </form >
             </div >
-            <button onClick={checkData} className="btn btn-danger my-1">Check data</button>
 
         </div >
 

@@ -42,14 +42,6 @@ function ListOrdersComponent() {
         });
     }
 
-    const confirmOrder = (ord) => {
-        OrderService.confirmOrder(ord).then((res) => {
-            if (res.status === 200) {
-                navigate("/orders");
-                navigate(0);
-            }
-        });
-    }
 
 
 
@@ -62,54 +54,55 @@ function ListOrdersComponent() {
             </Link>
             <div className="row">
                 <div className="col-lg-12">
-                    <div className="bootstrap-data-table-panel">
-                        <div className="table-responsive">
-                            <table className="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#Order id</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Employee Full Name</th>
-                                        <th scope="col">Source</th>
-                                        <th scope="col"><span className="ml-3">Status</span></th>
-                                        <th scope="col" className="text-center"><span>Actions</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        ordersInfo.map((order) => {
-                                            return (
-                                                <tr key={order.ord}>
-                                                    <td>{order.ord}</td>
-                                                    <td>{order.dt}</td>
-                                                    <td>{order.fullName}</td>
-                                                    <td>{order.originDescription}</td>
-                                                    <OrderStatus status={order.statusDescription}></OrderStatus>
-                                                    <td>
-                                                        <div className="container d-flex justify-content-center">
-                                                            <button className="btn btn-danger" onClick={() => deleteOrder(order.ord)}>Delete</button>
-                                                            {
-                                                                order.statusDescription === "Ready" ? <button className="btn btn-secondary mx-2" onClick={() => processOrder(order.ord)}>Process</button> : null
+                    <div className="card">
+                        <div className="bootstrap-data-table-panel">
+                            <div className="table-responsive">
+                                <table className="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#Order</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Employee Full Name</th>
+                                            <th scope="col">Source</th>
+                                            <th scope="col"><span className="ml-3">Status</span></th>
+                                            <th scope="col" className="text-center"><span>Actions</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            ordersInfo.map((order) => {
+                                                return (
+                                                    <tr key={order.ord}>
+                                                        <td>{order.ord}</td>
+                                                        <td>{order.dt}</td>
+                                                        <td>{order.fullName}</td>
+                                                        <td>{order.originDescription}</td>
+                                                        <OrderStatus status={order.statusDescription}></OrderStatus>
+                                                        <td>
+                                                            <div className="container d-flex justify-content-center">
+                                                                <button className="btn btn-danger" onClick={() => deleteOrder(order.ord)}>Delete</button>
+                                                                {
+                                                                    order.statusDescription === "Ready" ? <button className="btn btn-secondary mx-2" onClick={() => processOrder(order.ord)}>Process</button> : null
 
-                                                            }
-                                                            {
-                                                                order.statusDescription === "Waiting for confirmation" ? <button className="btn btn-info mx-2" onClick={() => confirmOrder(order.ord)}>Confirm order</button> : null
-
-                                                            }
-                                                        </div>
-                                                    </td>
-
-
-                                                </tr>
-
-                                            )
-
-                                        })
-                                    }
+                                                                }
+                                                                <Link to={"/ordlines/" + order.ord}>
+                                                                    <button className="btn btn-warning mx-2 text-white">View order lines</button>
+                                                                </Link>
+                                                            </div>
+                                                        </td>
 
 
-                                </tbody>
-                            </table>
+                                                    </tr>
+
+                                                )
+
+                                            })
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div >

@@ -13,48 +13,9 @@ function CreateProductComponent() {
         "active": false
     });
 
-    const handleDescriptionInput = (e) => {
-        e.preventDefault();
 
-        let updatedValue = { description: e.target.value };
-        setNewProduct(newProduct => ({
-            ...newProduct,
-            ...updatedValue
-        }));
-
-    }
-
-    const handleQuantityInput = (e) => {
-        e.preventDefault();
-
-        let updatedValue = { quantity: e.target.value };
-        setNewProduct(newProduct => ({
-            ...newProduct,
-            ...updatedValue
-        }));
-
-    }
-
-    const handlePriceInput = (e) => {
-        e.preventDefault();
-
-        let updatedValue = { price: e.target.value };
-        setNewProduct(newProduct => ({
-            ...newProduct,
-            ...updatedValue
-        }));
-
-    }
-
-    const handleAvailabilityInput = (e) => {
-        e.preventDefault();
-
-        let updatedValue = { active: e.target.value === "yes" ? true : false };
-        setNewProduct(newProduct => ({
-            ...newProduct,
-            ...updatedValue
-        }));
-
+    const handleProductForm = (e) => {
+        setNewProduct(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
     const saveProduct = (e) => {
@@ -65,35 +26,31 @@ function CreateProductComponent() {
                 navigate(0);
             }
         })
-
-        console.log(newProduct);
-
     }
-
 
     return (
         <div className="mt-3">
-            <h3>Add a product</h3>
+            <h3 className="text-light">Add a product</h3>
 
             <form onSubmit={saveProduct}>
                 <div className="row">
                     <div className="col-lg-4">
                         <label>Description</label>
-                        <input type="text" className="form-control" placeholder="Description" onChange={handleDescriptionInput} required />
+                        <input name="description" type="text" className="form-control" placeholder="Description" onChange={handleProductForm} required />
                     </div>
                     <div className="col-lg-2">
                         <label>Quantity</label>
-                        <input type="number" min="0" className="form-control" placeholder="Quantity" onChange={handleQuantityInput} required />
+                        <input name="quantity" type="number" min="0" className="form-control" placeholder="Quantity" onChange={handleProductForm} required />
                     </div>
                     <div className="col-lg-2">
                         <label>Price</label>
-                        <input type="number" min="0" step="0.01" className="form-control" placeholder="Price" onChange={handlePriceInput} required />
+                        <input name="price" type="number" min="0" step="0.01" className="form-control" placeholder="Price" onChange={handleProductForm} required />
                     </div>
                     <div className="col-lg-2">
                         <label>Available</label>
-                        <select className="form-control" onChange={handleAvailabilityInput} required>
-                            <option key={0} value={"no"}>No</option>
-                            <option key={1} value={"yes"}>Yes</option>
+                        <select name="active" className="form-control" onChange={handleProductForm} required>
+                            <option key={0} value={false}>No</option>
+                            <option key={1} value={true}>Yes</option>
                         </select>
                     </div>
                     <div className="col-lg-2">

@@ -32,53 +32,12 @@ function CreateEmployeeComponent() {
         getFunctions();
     }, [])
 
-    const handleFirstNameInput = (e) => {
-        let updatedValue = { firstName: e.target.value };
-        setEmployee(employee => ({
-            ...employee,
-            ...updatedValue
-        }));
+
+
+    const handleEmployeeForm = (e) => {
+        setEmployee(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    const handleLastNameInput = (e) => {
-        let updatedValue = { lastName: e.target.value };
-        setEmployee(employee => ({
-            ...employee,
-            ...updatedValue
-        }));
-    }
-
-    const handleEmailIdInput = (e) => {
-        let updatedValue = { emailId: e.target.value };
-        setEmployee(employee => ({
-            ...employee,
-            ...updatedValue
-        }));
-    }
-
-    const handleFunctionInput = (e) => {
-        let updatedValue = { function: e.target.value };
-        setEmployee(employee => ({
-            ...employee,
-            ...updatedValue
-        }));
-    }
-
-    const handleSalaryInput = (e) => {
-        let updatedValue = { salary: e.target.value };
-        setEmployee(employee => ({
-            ...employee,
-            ...updatedValue
-        }));
-    }
-
-    const handleHireDateInput = (e) => {
-        let updatedValue = { hireDate: e.target.value };
-        setEmployee(employee => ({
-            ...employee,
-            ...updatedValue
-        }));
-    }
 
     const saveEmployee = (e) => {
 
@@ -91,6 +50,7 @@ function CreateEmployeeComponent() {
     }
 
 
+
     return (
         <div>
             <div className="container mt-2">
@@ -101,19 +61,19 @@ function CreateEmployeeComponent() {
                             <form onSubmit={saveEmployee}>
                                 <div className="form-group">
                                     <label>First Name</label>
-                                    <input type="text" placeholder="First name" name="firstName" className="form-control" value={employee.firstName} onChange={handleFirstNameInput} required />
+                                    <input type="text" placeholder="First name" name="firstName" className="form-control" value={employee.firstName} onChange={handleEmployeeForm} required />
                                 </div>
                                 <div className="form-group">
                                     <label>Last Name</label>
-                                    <input type="text" placeholder="Last name" name="lastName" className="form-control" value={employee.lastName} onChange={handleLastNameInput} required />
+                                    <input type="text" placeholder="Last name" name="lastName" className="form-control" value={employee.lastName} onChange={handleEmployeeForm} required />
                                 </div>
                                 <div className="form-group">
                                     <label>Email address</label>
-                                    <input type="email" placeholder="Email address" name="emailId" className="form-control" value={employee.emailId} onChange={handleEmailIdInput} required />
+                                    <input type="email" placeholder="Email address" name="emailId" className="form-control" value={employee.emailId} onChange={handleEmployeeForm} required />
                                 </div>
                                 <div className="form-group">
                                     <label>Function</label>
-                                    <select className="form-control" value={employee.function} onChange={handleFunctionInput} required>
+                                    <select className="form-control" value={employee.function} onChange={handleEmployeeForm} required name="function">
                                         <option key={0} value={0}>Select function</option>
                                         {
                                             functions.map((funct) => {
@@ -126,11 +86,11 @@ function CreateEmployeeComponent() {
                                 </div>
                                 <div className="form-group">
                                     <label>Salary</label>
-                                    <input type="number" placeholder="Salary" name="salary" className="form-control" value={employee.salary} onChange={handleSalaryInput} required />
+                                    <input type="number" placeholder="Salary" name="salary" className="form-control" value={employee.salary} onChange={handleEmployeeForm} required />
                                 </div>
                                 <div className="form-group">
                                     <label>Hire date</label>
-                                    <input type="date" placeholder="Date" name="date" className="form-control" value={employee.hireDate} onChange={handleHireDateInput} required />
+                                    <input type="date" placeholder="Date" name="hireDate" className="form-control" value={employee.hireDate} onChange={handleEmployeeForm} required />
                                 </div>
 
 

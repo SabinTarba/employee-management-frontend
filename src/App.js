@@ -6,6 +6,7 @@ import UpdateEmployeeComponent from './components/Employee/UpdateEmployeeCompone
 import ListOrdersComponent from './components/Ord/ListOrdersComponent';
 import CreateOrderComponent from './components/Ord/CreateOrderComponent';
 import ListProductsComponent from './components/Product/ListProductsComponent';
+import OrdlnComponent from './components/Ordln/OrdlnComponent';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/orders" element={<ListOrdersComponent />} />
           <Route path="/add-order" element={<CreateOrderComponent />} />
           <Route path="/products" element={<ListProductsComponent />} />
+          <Route path="/ordlines/:ord" element={<OrdlnComponent />} />
         </Routes>
 
       </Router >
