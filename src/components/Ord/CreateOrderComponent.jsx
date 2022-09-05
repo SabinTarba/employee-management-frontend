@@ -151,7 +151,6 @@ function CreateOrderComponent() {
 
     }
 
-<<<<<<< HEAD
 
 
     // const checkData = () => {
@@ -166,18 +165,6 @@ function CreateOrderComponent() {
     //            <button onClick={checkData} className="btn btn-danger my-1">Check data</button>
 
     // }
-=======
-    //const checkData = () => {
-        // console.log(quantitiesProductIDsARRAY);
-        // console.log(order);
-        //console.log(lastOrd);
-        //document.getElementById('test7').disabled = true;
-
-        // OrderService.createOrder(order).then((res) => {
-        //     console.log(res.data.lastOrd);
-        // })
-    //}
->>>>>>> 36772ed94df92e9fc4f9b0a0b4043ac89a948991
 
 
 
